@@ -1,81 +1,27 @@
-# liveify [![Build Status](https://travis-ci.org/quarterto/liveify.svg?branch=master)](https://travis-ci.org/quarterto/liveify)
+liveify-stable
+==============
 
-browserify transform for livescript
+Browserify transform for LiveScript.
 
-mix and match `.ls` and `.js` files in the same project
+It's a fork of [liveify](https://github.com/quarterto/liveify).
 
-**important: when using require('path/to/file.ls') remember to use .ls extension**
+About this fork
+---------------
 
-# about this fork
+This fork uses `LiveScript` by `peerDependencies`, that means your application must provide `LiveScript` package instead of `liveify`. The reason is that `LiveScript` doesn't follow semver, and can brake backward compatibility in any next release, but original package `liveify` doesn't using fixed version of `LiveScript`. You can read about correct solution [here](https://github.com/quarterto/liveify#livescript-versions), but this is solution very uncomfortable for production. This fork just gets `LiveScript` package from dependencies of your application (from parent package), and you can guarantee stability of your application by fixed version of `LiveScript`.
 
-This fork uses `LiveScript` by `peerDependencies`, that means your application must provide `LiveScript` package instead of `liveify`. The reason is that `LiveScript` doesn't follow semver, and can brake backward compatibility in any next release, but original package `liveify` doesn't using fixed version of `LiveScript`. You can read about correct solution below, but this is solution very uncomfortable for production. This fork just gets `LiveScript` package from dependencies of your application (from parent package), and you can guarantee stability of your application by fixed version of `LiveScript`.
+This fork is created for use together with [front-end-gulp-pattern](https://github.com/unclechu/front-end-gulp-pattern) package.
 
-# example
+Install
+-------
 
-given some files written in a mix of `js` and `ls`:
-
-foo.ls:
-
-``` livescript
-console.log require './bar.js'
-```
-
-bar.js:
-
-``` js
-module.exports = require('./baz.ls')(5)
-```
-
-baz.ls:
-
-``` livescript
-module.exports = (* 111)
-```
-
-install liveify into your app:
+With [npm](https://npmjs.or) do:
 
 ```
-$ npm install liveify
+npm install liveify-stable
 ```
 
-when you compile your app, just pass `-t liveify` to browserify:
-
-```
-$ browserify -t liveify foo.ls > bundle.js
-$ node bundle.js
-555
-```
-
-# install
-
-With [npm](https://npmjs.org) do:
-
-```
-npm install liveify
-```
-
-# options
-
-By default livescript is compiled with the constant flag set to
-false. This can be set to true by setting the environment
-variable `LSC_CONST`:
-
-```
-LSC_CONST=true browserify -t liveify -e my-app.ls > my-app.js
-```
-
-# livescript versions
-
-Livescript does not follow semver. For example, 1.3 is backwards-incompatible with code written in 1.2 using `require!`. This causes problems with `npm`; because Liveify uses a semver range to specify Livescript, you can get an incompatible version when you don't expect it. To use a specific version of Livescript with Liveify, explicity install it alongside, then dedupe:
-
-```
-npm install liveify@2 LiveScript@1.2.0
-npm dedupe
-```
-
-This only works with Liveify version 2 and later. Liveify 1.x will only dedupe Livescript versions 1.3.1 and later.
-
-# license
+License
+-------
 
 MIT
-
