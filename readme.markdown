@@ -6,6 +6,10 @@ mix and match `.ls` and `.js` files in the same project
 
 **important: when using require('path/to/file.ls') remember to use .ls extension**
 
+# about this fork
+
+This fork uses `LiveScript` by `peerDependencies`, that means your application must provide `LiveScript` package instead of `liveify`. The reason is that `LiveScript` doesn't follow semver, and can brake backward compatibility in any next release, but original package `liveify` doesn't using fixed version of `LiveScript`. You can read about correct solution below, but this is solution very uncomfortable for production. This fork just gets `LiveScript` package from dependencies of your application (from parent package), and you can guarantee stability of your application by fixed version of `LiveScript`.
+
 # example
 
 given some files written in a mix of `js` and `ls`:
