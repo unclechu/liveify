@@ -1,24 +1,27 @@
 {
-  "name": "liveify",
-  "version": "2.0.0",
-  "description": "browserify v2 plugin for LiveScript with support for mixed .js and .ls files",
+  "name": "liveify-stable",
+  "version": "1.0.0",
+  "description": "Stable fork of quarterto/liveify that uses LiveScript by peerDependencies",
   "main": "index.js",
   "dependencies": {
-    "LiveScript": "1.x",
     "through": "~2.2.0"
   },
   "devDependencies": {
     "tap": "~0.4.0",
-    "browserify": "~2.4.0"
+    "browserify": "~2.4.0",
+    "LiveScript": "1.3.1"
+  },
+  "peerDependencies": {
+    "LiveScript": "*"
   },
   "scripts": {
     "test": "tap test/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/quarterto/liveify.git"
+    "url": "git://github.com/unclechu/liveify-stable.git"
   },
-  "homepage": "https://github.com/quarterto/liveify",
+  "homepage": "https://github.com/unclechu/liveify-stable",
   "keywords": [
     "LiveScript",
     "ls",
@@ -34,7 +37,8 @@
     "url": "http://substack.net"
   },
   "contributors": [
-    "Matt Brennan <matt.brennan@import.io>"
+    "Matt Brennan <matt.brennan@import.io>",
+    "Viacheslav Lotsmanov <lotsmanov89@gmail.com>"
   ],
   "license": "MIT"
 }
