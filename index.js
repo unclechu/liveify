@@ -1,4 +1,4 @@
-var LiveScript = require('LiveScript');
+var livescript = require('livescript');
 var through = require('through');
 
 // Compile all variables as constants if the LSC_CONST
@@ -17,7 +17,7 @@ module.exports = function (file) {
     function write (buf) { data += buf }
     function end () {
         try {
-          var js = LiveScript.compile(data, {
+          var js = livescript.compile(data, {
             'filename': file,
             'const': k,
             'bare': true
